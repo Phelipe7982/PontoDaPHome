@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { Link } from "react-router-dom";
 import http from "../../../http";
 import IPrato from "../../../interfaces/IPrato";
+import { Link as RouterLink } from 'react-router-dom';
 
 const AdministracaoPratos = () => {
-    const [pratos, setPratos] = useState<IPrato[]>([]);
+
+    const [pratos, setPratos] = useState<IPrato[]>([])
 
     useEffect(() => {
         http.get<IPrato[]>('pratos/')
-            .then(resposta => setPratos(resposta.data));
-    })
+            .then(resposta => setPratos(resposta.data))
+    }, [])
 
     const excluir = (pratoAhSerExcluido: IPrato) => {
         http.delete(`pratos/${pratoAhSerExcluido.id}/`)
             .then(() => {
-                const listaDePratos = pratos.filter(prato => prato.id !== pratoAhSerExcluido.id)
-                setPratos([...listaDePratos]);
-                alert("Prato excluído com sucesso!")
+                const listaPratos = pratos.filter(prato => prato.id !== pratoAhSerExcluido.id)
+                setPratos([...listaPratos])
             })
     }
 
@@ -43,7 +43,6 @@ const AdministracaoPratos = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
-
                 <TableBody>
                     {pratos.map(prato => <TableRow key={prato.id}>
                         <TableCell>
@@ -53,10 +52,10 @@ const AdministracaoPratos = () => {
                             {prato.tag}
                         </TableCell>
                         <TableCell>
-                            <a href={prato.imagem} target="_blank" rel="noreferrer">Ver imagem</a>
+                            [<a href={prato.imagem} target="_blank" rel="noreferrer">Ver Imagem</a>]
                         </TableCell>
                         <TableCell>
-                            [ <Link to={`/admin/pratos/${prato.id}`}>Editar</Link> ]
+                            [ <RouterLink to={`/admin/pratos/${prato.id}`}>Editar</RouterLink> ]
                         </TableCell>
                         <TableCell>
                             <Button variant="outlined" color="error" onClick={() => excluir(prato)}>

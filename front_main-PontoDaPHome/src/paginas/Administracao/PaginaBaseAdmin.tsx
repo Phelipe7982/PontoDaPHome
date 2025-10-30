@@ -1,5 +1,6 @@
 import { AppBar, Box, Button, Typography, Container, Toolbar, Link, Paper } from "@mui/material";
 import { Outlet, Link as RouterLink } from 'react-router-dom';
+// import HomeIcon from '@mui/icons-material/Home';
 
 const PaginaBaseAdmin = () => {
     return (
@@ -12,25 +13,30 @@ const PaginaBaseAdmin = () => {
                         </Typography>
                         <Box sx={{ display: "flex", flexGrow: 1 }}>
                             <Link component={RouterLink} to="/admin/restaurantes">
-                                <Button sx={{ my: 2, color: "white" }}>
+                                <Button sx={{ my: 2, mx: 3, color: "white" }}>
                                     Restaurantes
                                 </Button>
                             </Link>
                             <Link component={RouterLink} to="/admin/restaurantes/novo">
-                                <Button sx={{ my: 2, color: "white" }}>
+                                <Button sx={{ my: 2, mx: 3, color: "white" }}>
                                     Novo Restaurante
                                 </Button>
                             </Link>
                             <Link component={RouterLink} to="/admin/pratos">
-                                <Button sx={{ my: 2, color: "white" }}>
+                                <Button sx={{ my: 2, mx: 3, color: "white" }}>
                                     Pratos
                                 </Button>
                             </Link>
                             <Link component={RouterLink} to="/admin/pratos/novo">
-                                <Button sx={{ my: 2, color: "white" }}>
+                                <Button sx={{ my: 2, mx: 3, color: "white" }}>
                                     Novo Prato
                                 </Button>
                             </Link>
+                            {/* <Link component={RouterLink} to="/">
+                                <Button sx={{ my: 2, mx: 3, color: "white" }}>
+                                    <HomeIcon></HomeIcon>
+                                </Button>
+                            </Link> */}
                         </Box>
                     </Toolbar>
                 </Container>
